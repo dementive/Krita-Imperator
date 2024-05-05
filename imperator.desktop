@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Service
+ServiceTypes=Krita/PythonPlugin
+X-KDE-Library=imperator
+X-Python-2-Compatible=false
+X-Krita-Manual=Manual.html
+Name=imperator
+Comment=Create a new province for Imperator: Rome
