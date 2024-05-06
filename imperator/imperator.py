@@ -135,6 +135,8 @@ def create_new_province(province_type: ProvinceType):
             update_province_setup_file(new_id, province_type)
             if province_type.name in ("sea", "impassable_terrain", "river"):
                 update_default_map_file(new_id, province_type)
+            message = province_type.name.replace("_", " ").capitalize()
+            view.showFloatingMessage(f"New {message} province has been created.", Krita().icon("warning"), 1000, 0)
             return
 
 
@@ -151,8 +153,8 @@ class Imperator(Extension):
         self._create_action(window, "Create Impassable Province", self.create_impassable_terrain_province)
         self._create_action(window, "Create River Province", self.create_river_province)
 
-    def _create_action(self, window, name, callback):
-        action = window.createAction(name, name, "tools")
+    def _create_action(self, window, name: str, callback):
+        action = window.createAction(name.lower().replace(" ", "_"), name, "tools")
         action.triggered.connect(callback)
 
     def create_land_province(self):
